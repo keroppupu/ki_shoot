@@ -93,7 +93,7 @@ class App:
 
     def update(self):
         if self.screen == "title":
-            if pyxel.btnp(pyxel.KEY_A):
+            if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_X):
                 self.screen = "game"
                 self.reset_game()
 
@@ -109,21 +109,21 @@ class App:
                     self.is_invincible = False
 
             # プレイヤーの移動
-            if pyxel.btn(pyxel.KEY_LEFT):
+            if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
                 self.player_x = max(0, self.player_x - self.player_speed)  # 画面左端に制限
-            if pyxel.btn(pyxel.KEY_RIGHT):
+            if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
                 self.player_x = min(pyxel.width - self.player_width, self.player_x + self.player_speed)  # 画面右端に制限
-            if pyxel.btn(pyxel.KEY_UP):
+            if pyxel.btn(pyxel.KEY_UP) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
                 self.player_y = max(0, self.player_y - self.player_speed)  # 画面上端に制限
-            if pyxel.btn(pyxel.KEY_DOWN):
+            if pyxel.btn(pyxel.KEY_DOWN) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
                 self.player_y = min(pyxel.height - self.player_height, self.player_y + self.player_speed)  # 画面下端に制限
 
             # 弾の発射
-            if pyxel.btnp(pyxel.KEY_X):  # Xキーが押されたら
+            if pyxel.btnp(pyxel.KEY_X) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):  # Xキーが押されたら
                 self.bullets.append({"x": self.player_x + self.player_width, "y": self.player_y + self.player_height // 2})
 
             # ソード攻撃
-            if pyxel.btnp(pyxel.KEY_Y):
+            if pyxel.btnp(pyxel.KEY_Y) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_B):
                 self.sword_active = True
                 self.sword_timer = 5
                 self.sword_x = self.player_x + self.player_width // 2

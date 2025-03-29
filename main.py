@@ -93,7 +93,7 @@ class App:
 
     def update(self):
         if self.screen == "title":
-            if pyxel.btnp(pyxel.KEY_SPACE):
+            if pyxel.btnp(pyxel.KEY_A):
                 self.screen = "game"
                 self.reset_game()
 
@@ -466,7 +466,7 @@ class App:
                     self.explosions.remove(explosion)
 
         elif self.screen == "gameover":
-            if pyxel.btnp(pyxel.KEY_SPACE):
+            if pyxel.btnp(pyxel.KEY_A):
                 self.screen = "title"
 
     def draw(self):
